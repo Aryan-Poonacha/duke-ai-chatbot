@@ -18,10 +18,11 @@ The dataset used for finetuning is [this](https://huggingface.co/datasets/alespa
 
 #### Process
 
+The `finetune.py` script is used for finetuning the model. It is used to fine-tune a model using the SFT method. The custom dataset is loaded and a formatting function is prepared to process the training data. The model is then loaded in 4-bit quantization for efficient memory usage. An instance of the SFTTrainer is created with the base model, the dataset, the tokenizer, the maximum sequence length, the formatting function, and the training arguments. The model is then trained using the trainer.train() method and saved to the specified output directory using the trainer.save_model() method.
 
 ### Retrieval-Augmented Generation (RAG)
 
-The system uses Retrieval-Augmented Generation (RAG) to retrieve data from the vector database. 
+The system uses Retrieval-Augmented Generation (RAG) to retrieve data from the vector database, using the Vectara platform for semantic vector search.
 
 
 ## Pipeline
