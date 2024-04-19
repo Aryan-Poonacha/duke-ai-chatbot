@@ -1,0 +1,296 @@
+html > .duke-alert {
+    font-size: 14px;
+}
+
+.duke-alert {
+    font-family: Helvetica, Arial, sans serif;
+    font-size: 14px;
+}
+
+.duke-alert a {
+    color: #ffffff;
+    text-decoration: none
+}
+
+.duke-alert a:focus, .duke-alert a:hover {
+    text-decoration: underline
+}
+
+.duke-alert a[class], .duke-alert a[id] {
+    outline: none
+}
+
+.duke-alert:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+
+.duke-alert {
+    padding: 10px;
+    text-align: left;
+    position: relative;
+    margin: 5px auto 10px auto;
+    line-height: 18px;
+}
+
+.duke-alert-0 {
+    display: none;
+}
+
+.duke-alert-lev1 {
+    color: #ffcccc;
+    background: #ad1e17 url(https://alertbar.oit.duke.edu/sites/all/themes/blackwell/images/struct/bg-alert.png) bottom center repeat-x;
+}
+
+.duke-alert-lev2 {
+    color: #262626;
+    background: #EE9827 url(https://alertbar.oit.duke.edu/sites/all/themes/blackwell/images/struct/bg-alert-2.png) bottom center repeat-x;
+}
+
+.duke-alert ul {
+    margin: 5px 5px 10px 0;
+}
+
+.duke-alert ul li {
+    padding-left: 0;
+    list-style-type: disc;
+    background-image: none;
+    margin-left: 30px;
+}
+
+.duke-alert h2, .duke-alert strong {
+    color: #fff;
+}
+
+.duke-alert .dukealert-header {
+    width: 20%;
+    min-width: 180px;
+    float: left;
+    padding: 5px 10px;
+}
+
+.duke-alert-lev2 .dukealert-header, .duke-alert-lev1 .dukealert-header {
+    padding: 10px;
+}
+
+.duke-alert .dukealert-description {
+    border-left: 1px solid #c15752;
+    float: left;
+    width: 70%;
+    padding: 5px 0 0 20px;
+    margin-top: 10px;
+}
+
+.duke-alert-lev1 .dukealert-description {
+    border-left: 1px solid #c15752;
+}
+
+.duke-alert-lev2 .dukealert-description {
+    border-left: 1px solid #262626;
+    color: #262626;
+}
+
+.duke-alert .dukealert-description a {
+    color: #ffffff !important;
+    text-decoration: none;
+    border-bottom: 1px dotted;
+
+}
+
+.duke-alert .dukealert-description a:hover {
+    color: #ffffff!important;
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+.duke-alert-lev2 .dukealert-description a{
+    color: #262626 !important;
+}
+
+.duke-alert-lev2 .dukealert-description a:hover {
+    color: #262626 !important;
+}
+
+/*#header .duke-alert-lev1 {
+ *  *   padding: 15px 5px;
+ *   *     line-height: 1.375em;}*/
+.duke-alert h2 {
+    margin: 0 0 15px 0!important;
+    font-family: Helvetica, Arial, sans serif;
+    padding: 0;
+    background: none;
+}
+
+.duke-alert h2.dukealert-standardHeadline {
+    font-family: Helvetica, Arial, sans serif!important;
+    font-size: 24px;
+    height: 18px;
+    text-transform: uppercase;
+}
+
+.duke-alert-lev1 h2.dukealert-standardHeadline {
+    font-size: 34px!important;
+    height: 30px;
+}
+
+.duke-alert-lev2 h2.dukealert-standardHeadline {
+    color: #262626;
+}
+
+.dukealert-alertLink {
+    display: inline-block;
+    height: 30px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.dukealert-alertLink span {
+    position: relative;
+    padding: 0 8px 0 8px;
+    left: 2px;
+    display: inline-block;
+    height: 30px;
+    color: #eeeeee;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.duke-alert-lev1 .dukealert-alertLink {
+    background: url(https://alertbar.oit.duke.edu/sites/all/themes/blackwell/images/struct/btn-alert_red.png) 0 0 no-repeat;
+}
+
+.duke-alert-lev1 .dukealert-alertLink:hover {
+    background-position: 0 -30px;
+    text-decoration: none;
+}
+
+.duke-alert-lev1 .dukealert-alertLink span {
+    background: url(https://alertbar.oit.duke.edu/sites/all/themes/blackwell/images/struct/btn-alert_red.png) top right no-repeat;
+    color: #CBB3b3;
+}
+
+.duke-alert-lev1 .dukealert-alertLink:hover span {
+    background-position: right -30px;
+    text-decoration: none;
+}
+
+.duke-alert-lev2 .dukealert-alertLink {
+    background: url(https://alertbar.oit.duke.edu/sites/all/themes/blackwell/images/struct/btn-alert_orange.png) 0 0 no-repeat;
+}
+
+.duke-alert-lev2 .dukealert-alertLink:hover {
+    background-position: 0 -30px;
+    text-decoration: none;
+}
+
+.duke-alert-lev2 .dukealert-alertLink span {
+    background: url(https://alertbar.oit.duke.edu/sites/all/themes/blackwell/images/struct/btn-alert_orange.png) top right no-repeat;
+    color: #785a1e;
+}
+
+.duke-alert-lev2 .dukealert-alertLink:hover span {
+    background-position: right -30px;
+    text-decoration: none;
+}
+
+.dukealert-alertLink span.ext {
+    display: none!important;
+}
+
+.duke-alert.alert-0 {
+    display: none;
+}
+
+
+@media screen and (max-width: 767px) {
+    .duke-alert .dukealert-header {
+        width: 100% !important;
+    }
+
+    .duke-alert .dukealert-description {
+        width: 100%;
+        border-left: 0;
+        padding-left: 10px;
+    }
+}
+
+.duke-alert-lev3 {
+  color: #012169 !important;
+  background-color: #fff !important;
+  border: 1px solid #e5e5e5 !important;
+  overflow: hidden;
+}
+
+.duke-alert-lev3 .dukealert-description {
+  border-left: none;
+  max-width: 1200px;
+  width: auto;
+  padding-left: 100px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:0;
+  float: none;
+  font-size: 15px;
+  font-weight: 400;
+  position: relative;
+}
+
+.duke-alert-lev3 .dukealert-description:before {
+  content:'';
+  background-image: url(https://alertbar.oit.duke.edu/sites/all/themes/blackwell/images/struct/circle-right.svg);
+  background-repeat: no-repeat;
+  opacity: .07;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 30px;
+  background-size: 40px;
+  height: 40px;
+  width: 40px;
+}
+
+.duke-alert-lev3 .dukealert-description a,
+.duke-alert-lev3 .dukealert-description a:hover,
+.duke-alert-lev3 .dukealert-description a:focus,
+.duke-alert-lev3 .dukealert-description a:visited,
+.duke-alert-lev3 .dukealert-description a:active {
+  color: #012169 !important;
+}
+
+.duke-alert-lev3 .dukealert-description strong {
+    color: #012169 !important;
+  }
+
+
+.duke-alert-lev3 .dukealert-heading {
+  color: #012169 !important;
+  font-size:24px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+#dukealert.duke-alert-lev3 .dukealert-description p {
+  color: #012169 !important;
+  margin-bottom: 10px !important;
+}
+
+#dukealert.duke-alert-lev3 .dukealert-description p:last-of-type {
+  margin-bottom: 0 !important;
+}
+
+@media screen and (max-width:768px) {
+  .duke-alert-lev3 {
+    padding: 0;
+  }
+  .duke-alert-lev3 .dukealert-description {
+    padding-left: 20px;
+  }
+  .duke-alert-lev3 .dukealert-description:before {
+    left: 0;
+  }
+}
