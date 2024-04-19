@@ -10,6 +10,12 @@ from huggingface_hub import HfApi
 
 load_dotenv()
 
+st.session_state["corpus_number"] = st.secrets["VECTARA_CORPUS_ID"]
+st.session_state["vectara_api_key"] = st.secrets["VECTARA_API_KEY"]
+st.session_state["vectara_customer_id"] = st.secrets["VECTARA_CUSTOMER_ID"]
+st.session_state["hf_model_id"] = st.secrets["HF_MODEL_ID"]
+st.session_state["hf_token"] = st.secrets["HF_TOKEN"]
+
 def get_latest_conversation_id(api_key, customer_id):
     """Retrieves the latest conversation ID from Vectara."""
     response = requests.post(
@@ -29,7 +35,48 @@ def get_latest_conversation_id(api_key, customer_id):
         else None
     )
 
-def chat_with_model(prompt):
+def get_vectara_results(query):
+    """Queries the Vectara API and retrieves semantic search results."""
+    response = requests.post(
+        "https://api.vectara.io:443/v1/stream-query",
+        headers={
+            "Content-Type": "application/json",
+            "authorization": "Bearer " + st.session_state["vectara_api_key"],
+            "customer-id": st.session_state["vectara_customer_id"],
+        },
+        json={
+            "query": [
+                {
+                    "query": query,
+                    "queryContext": "",
+                    "start": 0,
+                    "numResults": 10,
+                    "contextConfig": {
+                        "charsBefore": 0,
+                        "charsAfter": 0,
+                        "sentencesBefore": 2,
+                        "sentencesAfter": 2,
+                        "startTag": "%START_SNIPPET%",
+                        "endTag": "%END_SNIPPET%",
+                    },
+                    "corpusKey": [
+                        {
+                            "customerId": st.session_state["vectara_customer_id"],
+                            "corpusId": st.session_state["corpus_number"],
+                            "semantics": 0,
+                            "metadataFilter": "",
+                            "lexicalInterpolationConfig": {"lambda": 0.025},
+                            "dim": [],
+                        }
+                    ],
+                    "summary": [],
+                }
+            ]
+        },
+    )
+    return response.json()
+
+def chat_with_model(prompt, context):
     api = HfApi()
     model_id = st.session_state["hf_model_id"]
     token = st.session_state["hf_token"]
@@ -38,15 +85,9 @@ def chat_with_model(prompt):
     response = requests.post(
         f"https://api-inference.huggingface.co/models/{model_id}",
         headers={"Authorization": f"Bearer {token}"},
-        json={"inputs": prompt, "options": {"use_cache": False}},
+        json={"inputs": prompt, "options": {"use_cache": False}, "parameters": {"context": context}},
     )
     return response.json()[0]["generated_text"]
-
-st.session_state["corpus_number"] = st.secrets["VECTARA_CORPUS_ID"]
-st.session_state["vectara_api_key"] = st.secrets["VECTARA_API_KEY"]
-st.session_state["vectara_customer_id"] = st.secrets["VECTARA_CUSTOMER_ID"]
-st.session_state["hf_model_id"] = st.secrets["HF_MODEL_ID"]
-st.session_state["hf_token"] = st.secrets["HF_TOKEN"]
 
 # Streamlit page configuration
 st.set_page_config(page_title="Duke AI Chatbot", page_icon="💬")
@@ -67,7 +108,8 @@ with st.form("chat_input", clear_on_submit=True):
     user_prompt = st.text_input("Your message:", label_visibility="collapsed")
     if st.form_submit_button("Send"):
         st.session_state.messages.append({"role": "user", "content": user_prompt})
-        model_response = chat_with_model(user_prompt)
+        vectara_results = get_vectara_results(user_prompt)
+        model_response = chat_with_model(user_prompt, vectara_results)
         st.session_state.messages.append({"role": "assistant", "content": model_response})
 
 # Display chat messages
